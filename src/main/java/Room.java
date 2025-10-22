@@ -43,10 +43,15 @@ public class Room {
         return isClean() && !isOccupied();
     }
 
-    public void checkIn() {
-        this.occupied = true;
-        this.clean = false;
-        System.out.println("Thank you for checking in!");
+    public boolean checkIn() {
+        if (this.isAvailable()) {
+            this.occupied = true;
+            this.clean = false;
+            System.out.println("Thank you for checking in!");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void checkOut() {

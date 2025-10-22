@@ -1,9 +1,13 @@
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Employee {
     private int employeeId;
     private String name;
     private String department;
     private double payRate;
-    private int hoursWorked;
+    private double hoursWorked;
+    private double timePunchedIn;
 
 
     public Employee(int employeeId, String name, String department, double payRate, int hoursWorked) {
@@ -15,7 +19,7 @@ public class Employee {
         return (getRegularHours() * getPayRate()) + (getOvertimeHours() * overtimePayRate);
     }
 
-    public int getRegularHours() {
+    public double getRegularHours() {
         if (this.hoursWorked < 40) {
             return hoursWorked;
         } else {
@@ -27,7 +31,23 @@ public class Employee {
         return this.payRate;
     }
 
-    public int getOvertimeHours() {
+    public double getOvertimeHours() {
         return this.hoursWorked - 40;
+    }
+
+    public void punchTimeCard(LocalTime time, boolean isPunchingIn) {
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        String formattedTime = time.format(dateTimeFormatter);
+
+        if (isPunchingIn) {
+            double punchInTime = Double.parseDouble(formattedTime);
+            System.out.println("You have punched in at " + punchInTime + ", welcome!");
+            this.timePunchedIn = punchInTime;
+        } else {
+            double punchOutTime = Double.parseDouble(formattedTime);
+            System.out.println("You have punched out at " + punchOutTime + ", thank you! Your shift has been recorded.");
+            this.hoursWorked = hoursWorked + (punchOutTime - timePunchedIn);
+        }
     }
 }
