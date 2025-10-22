@@ -3,7 +3,6 @@ public class Room {
     private double price;
     private boolean clean;
     private boolean occupied;
-    private boolean available;
     private int roomNumber;
     private String roomType;
 
@@ -41,10 +40,23 @@ public class Room {
     }
 
     public boolean isAvailable() {
-        if (this.clean == true && this.occupied == false) {
-            return this.available = true;
-        } else {
-            return this.available = false;
-        }
+        return isClean() && !isOccupied();
+    }
+
+    public void checkIn() {
+        this.occupied = true;
+        this.clean = false;
+        System.out.println("Thank you for checking in!");
+    }
+
+    public void checkOut() {
+        this.occupied = false;
+        cleanRoom();
+        System.out.println("Thank you for staying with us! We hope you enjoyed your room.");
+    }
+
+    public void cleanRoom() {
+        this.clean = true;
+        System.out.println("The room has been cleaned!");
     }
 }

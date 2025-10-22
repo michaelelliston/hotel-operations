@@ -35,6 +35,7 @@ public class HotelOperations {
                         int numberOfNights = Integer.parseInt(myScanner.nextLine());
                         Reservation r = new Reservation (room1.getRoomNumber(), room1.getRoomType(), room1.getPrice(), numberOfNights, true);
                         reservations.add(r);
+                        room1.checkIn();
                         System.out.println("Thank you, your room has been reserved for " + r.getNumberOfNights() + " nights, at a total price of $" + r.calculateFinalPrice());
                     }
                 } else {
