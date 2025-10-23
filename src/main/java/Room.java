@@ -1,8 +1,8 @@
 public class Room {
     private int numberOfBeds;
     private double price;
-    private boolean clean;
-    private boolean occupied;
+    boolean clean;
+    boolean occupied;
     private int roomNumber;
     private String roomType;
 
@@ -50,6 +50,7 @@ public class Room {
             System.out.println("Thank you for checking in!");
             return true;
         } else {
+            System.out.println("This room is unavailable.");
             return false;
         }
     }
