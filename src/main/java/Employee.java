@@ -45,7 +45,7 @@ public class Employee {
         return this.hoursWorked - 40;
     }
 
-    public void punchTimeCard(LocalTime time, boolean isPunchingIn) {
+    public String punchTimeCard(LocalTime time, boolean isPunchingIn) {
 
         String formattedTime = time.format(dateTimeFormatter);
 
@@ -53,10 +53,12 @@ public class Employee {
             double punchInTime = Double.parseDouble(formattedTime);
             System.out.println("You have punched in at " + punchInTime + ", welcome!");
             this.timePunchedIn = punchInTime;
+            return "Punched in";
         } else {
             double punchOutTime = Double.parseDouble(formattedTime);
             System.out.println("You have punched out at " + punchOutTime + ", thank you! Your shift has been recorded.");
             this.hoursWorked = hoursWorked + (punchOutTime - timePunchedIn);
+            return "Punched out";
         }
     }
 
