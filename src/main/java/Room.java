@@ -55,10 +55,16 @@ public class Room {
         }
     }
 
-    public void checkOut() {
-        this.occupied = false;
-        cleanRoom();
-        System.out.println("Thank you for staying with us! We hope you enjoyed your room.");
+    public boolean checkOut() {
+        if (this.occupied == true) {
+            this.occupied = false;
+            cleanRoom();
+            System.out.println("Thank you for staying with us! We hope you enjoyed your room.");
+            return true;
+        } else {
+            System.out.println("Sorry, that room is already booked.");
+            return false;
+        }
     }
 
     public void cleanRoom() {
