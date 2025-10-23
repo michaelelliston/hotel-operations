@@ -27,4 +27,14 @@ class RoomTest {
         assertTrue(objectUnderTest.clean);
         assertFalse(objectUnderTest.occupied);
     }
+
+    @Test
+    void test_cleanRoom() {
+        Room objectUnderTest = new Room(2, 139, false, true, 1, "king");
+
+        boolean actual = objectUnderTest.cleanRoom();
+
+        assertTrue(actual);
+        assertTrue(objectUnderTest.clean);
+    }
 }

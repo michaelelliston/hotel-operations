@@ -67,8 +67,14 @@ public class Room {
         }
     }
 
-    public void cleanRoom() {
-        this.clean = true;
-        System.out.println("The room has been cleaned!");
+    public boolean cleanRoom() {
+        if (this.clean == false) {
+            this.clean = true;
+            System.out.println("The room has been cleaned!");
+            return true;
+        } else {
+            System.out.println("That room is already cleaned!");
+            return false;
+        }
     }
 }
